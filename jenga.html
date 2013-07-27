@@ -10,10 +10,30 @@
 	<script type="text/javascript" src="js/three.min.js"></script>
 	<script type="text/javascript" src="js/stats.js"></script>
 	<script type="text/javascript" src="physi.js"></script>
+
+	<script src="//js.leapmotion.com/0.2.0-beta6/leap.js"></script>
 	
 	<script type="text/javascript">
 	
 	'use strict';
+
+	// Get the LeapMotion up in this crib
+	var controller = new Leap.Controller();
+
+	// Run through LeapMotion diagnostics
+	controller.on('connect', function() {
+		console.log("Successfully connected.");
+	});
+
+	controller.on('deviceConnected', function() {
+		console.log("Leap device has been connected");
+	});
+
+	controller.on('deviceDisconnected', function() {
+		console.log("Leap device disconnected");
+	});
+
+	controller.connect();
 	
 	Physijs.scripts.worker = 'physijs_worker.js';
 	Physijs.scripts.ammo = 'examples/js/ammo.js';
