@@ -873,7 +873,7 @@ window.Physijs = (function() {
 				}
 
 				if ( object.material._physijs ) {
-					if ( !this._materials_ref_counts.hasOwnProperty( object.material._physijs.id ) ) {
+					if ( !object.material || !this._materials_ref_counts.hasOwnProperty( object.material._physijs.id ) ) {
 						this.execute( 'registerMaterial', object.material._physijs );
 						object._physijs.materialId = object.material._physijs.id;
 						this._materials_ref_counts[object.material._physijs.id] = 1;
@@ -923,7 +923,7 @@ window.Physijs = (function() {
 				this.execute( 'removeObject', { id: object._physijs.id } );
 			}
 		}
-		if ( this._materials_ref_counts.hasOwnProperty( object.material._physijs.id ) ) {
+		if ( object.material && this._materials_ref_counts.hasOwnProperty( object.material._physijs.id ) ) {
 			this._materials_ref_counts[object.material._physijs.id]--;
 			if(this._materials_ref_counts[object.material._physijs.id] == 0) {
 				this.execute( 'unRegisterMaterial', object.material._physijs );
