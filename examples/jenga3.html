@@ -142,11 +142,16 @@
 		var fingers = {};
 	    var spheres = {};
 
+	    window.ii = 0;
+
 	    // LEAP
       Leap.loop(function(frame) {
 
+        if (window.ii > 100) break;
+        else ii++;
         var fingerIds = {};
         var handIds = {};
+
 
         for (var index = 0; index < frame.pointables.length; index++) {
 
@@ -159,6 +164,8 @@
           var origin = new THREE.Vector3(pos[0], pos[1], pos[2]);
           var direction = new THREE.Vector3(dir[0], dir[1], dir[2]);
 
+          console.log("origin: ", origin);
+          console.log("direction: ", direction);
           if (!finger) {
             finger = new THREE.ArrowHelper(origin, direction, 40, Math.random() * 0xffffff);
             fingers[pointable.id] = finger;
