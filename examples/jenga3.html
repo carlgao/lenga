@@ -33,26 +33,26 @@
 		document.getElementById( 'viewport' ).appendChild( renderer.domElement );
 		
 		render_stats = new Stats();
-		render_stats.domElement.style.position = 'absolute';
+		/*render_stats.domElement.style.position = 'absolute';
 		render_stats.domElement.style.top = '1px';
 		render_stats.domElement.style.zIndex = 100;
 		document.getElementById( 'viewport' ).appendChild( render_stats.domElement );
-
+*/
 		physics_stats = new Stats();
-		physics_stats.domElement.style.position = 'absolute';
+		/*physics_stats.domElement.style.position = 'absolute';
 		physics_stats.domElement.style.top = '50px';
 		physics_stats.domElement.style.zIndex = 100;
-		document.getElementById( 'viewport' ).appendChild( physics_stats.domElement );
+		document.getElementById( 'viewport' ).appendChild( physics_stats.domElement );*/
 		
 		scene = new Physijs.Scene({ fixedTimeStep: 1 / 120 });
-		scene.setGravity(new THREE.Vector3( 0, -30, 0 ));
+		scene.setGravity(new THREE.Vector3( 0, -200, 0 ));
 		scene.addEventListener(
 			'update',
 			function() {
 
 				if ( selected_block !== null ) {
 					
-					_v3.copy( mouse_position ).add( block_offset ).sub( selected_block.position ).multiplyScalar( 5 );
+					_v3.copy( mouse_position ).add( block_offset ).sub( selected_block.position ).multiplyScalar( 10 );
 					_v3.y = 0;
 					selected_block.setLinearVelocity( _v3 );
 					
@@ -69,7 +69,7 @@
 		);
 		
 		camera = new THREE.PerspectiveCamera(
-			45,
+			50,
 			window.innerWidth / window.innerHeight,
 			.1,
 			1000
@@ -80,7 +80,7 @@
 			window.innerWidth / window.innerHeight,
 			1,
 			1000*/
-		camera.position.set( 250, 200, 500 );
+		camera.position.set( 250, 300, 250 );
 		camera.lookAt(new THREE.Vector3( 0, 200, 0 ));
 		//camera.lookAt(new THREE.Vector3( 0, 7, 0 ));
 		scene.add( camera );
@@ -107,7 +107,7 @@
 		
 		// Materials
 		table_material = Physijs.createMaterial(
-			new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture( 'images/wood.jpg' ), ambient: 0xFFFFFF }),
+			new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture( 'images/wood.jpg' ), ambient: 0xFF0000 }),
 			.9, // high friction
 			.2 // low restitution
 		);
@@ -129,7 +129,7 @@
 			0, // mass
 			{ restitution: .2, friction: .8 }
 		);
-		table.position.y = 40;
+		table.position.y = 50;
 		table.receiveShadow = true;
 		scene.add( table );
 		
@@ -155,20 +155,12 @@
 	    // LEAP
       Leap.loop(function(frame) {
 
-        /*if (window.ii > 900) return;
-        else window.ii++;*/
         var fingerIds = {};
         var handIds = {};
 
-        //carl
-        if (frame.pointables[1] && frame.pointables[0].direction[0] > 0 && frame.pointables[1].direction[1] < 0) {
-	  handlePinch({clientX: frame.pointables[1].tipPosition[0], clientY: frame.pointables[1].tipPosition[1]});
-	  document.getElementById("heading").style.color = 'blue';
-	} else {
-	  document.getElementById("heading").style.color = 'red';
-	}
+	
 
-        for (var index = 0; index < frame.pointables.length; index++) {
+        for (var index = 0; index < Math.min(2, frame.pointables.length); index++) {
 
           var pointable = frame.pointables[index];
           var finger = fingers[pointable.id];
@@ -179,10 +171,33 @@
           var origin = new THREE.Vector3(pos[0], pos[1], pos[2]);
           var direction = new THREE.Vector3(dir[0], dir[1], dir[2]);
 
+	  if (index == 0) {
+	    document.getElementById('leap').innerHTML = pos + " ";
+            window.ori = origin;
+	    window.dir = direction;
+			var ray, intersection,
+				i, scalar;
+			
+			if ( selected_block !== null ) {
+				_vector.set(window.ori
+					/*( evt.clientX / window.innerWidth ) * 2 - 1,
+					-( evt.clientY / window.innerHeight ) * 2 + 1,
+					1*/
+				);
+				projector.unprojectVector( _vector, camera );
+				
+				ray = new THREE.Raycaster( window.ori, window.dir.normalize());//camera.position, _vector.sub( camera.position ).normalize() );
+				//ray = new THREE.Raycaster( camera.position, _vector.sub( camera.position ).normalize() );
+				intersection = ray.intersectObject( intersect_plane );
+				mouse_position.copy( intersection[0].point );
+			}
+	    //handleMouseMove({clientX: , clientY: 
+	  } 
+
           //console.log("origin: ", origin);
           //console.log("direction: ", direction);
           if (!finger) {
-            finger = new THREE.ArrowHelper(origin, direction, 40, Math.random() * 0xffffff);
+            finger = new THREE.ArrowHelper(direction, origin, 40, Math.random() * 0xffffff);
             fingers[pointable.id] = finger;
             scene.add(finger);
           }
@@ -242,6 +257,7 @@
 	})();
 	
 		handlePinch = function( evt ) {
+			document.getElementById('trans').innerHTML = evt.clientX + ", " + evt.clientY;
 			var ray, intersections;
 			
 			_vector.set(
@@ -288,18 +304,26 @@
 			}
 		};
 		handleMouseDown = function( evt ) {
+				document.getElementById('vec').innerHTML = (evt.clientX) + "," + evt.clientY;
+					/*(( evt.clientX / window.innerWidth ) * 2 - 1) + "," + 
+					(-( evt.clientY / window.innerHeight ) * 2 + 1) + "," + "1";*/
+			document.getElementById('mouse').innerHTML = evt.clientX + ", " + evt.clientY;
 			var ray, intersections;
 			
-			_vector.set(
-				( evt.clientX / window.innerWidth ) * 2 - 1,
+			_vector.set(window.ori
+				/*( evt.clientX / window.innerWidth ) * 2 - 1,
 				-( evt.clientY / window.innerHeight ) * 2 + 1,
-				1
+				1*/
 			);
+			console.log("vector", _vector);
+			console.log("camera pos", camera.position);
 
 			projector.unprojectVector( _vector, camera );
 			
-			ray = new THREE.Raycaster( camera.position, _vector.sub( camera.position ).normalize() );
+			ray = new THREE.Raycaster( window.ori, window.dir.normalize());//camera.position, _vector.sub( camera.position ).normalize() );
+			console.log(ray);
 			intersections = ray.intersectObjects( blocks );
+			console.log(intersections);
 
 			if ( intersections.length > 0 ) {
 				selected_block = intersections[0].object;
@@ -319,19 +343,23 @@
 		
 		handleMouseMove = function( evt ) {
 			
+				document.getElementById('vec').innerHTML = (evt.clientX) + "," + evt.clientY;
+				/*document.getElementById('vec').innerHTML = 
+					(( evt.clientX / window.innerWidth ) * 2 - 1) + "," + 
+					(-( evt.clientY / window.innerHeight ) * 2 + 1) + "," + "1";*/
 			var ray, intersection,
 				i, scalar;
 			
 			if ( selected_block !== null ) {
-				
-				_vector.set(
-					( evt.clientX / window.innerWidth ) * 2 - 1,
+				_vector.set(window.ori
+					/*( evt.clientX / window.innerWidth ) * 2 - 1,
 					-( evt.clientY / window.innerHeight ) * 2 + 1,
-					1
+					1*/
 				);
 				projector.unprojectVector( _vector, camera );
 				
-				ray = new THREE.Raycaster( camera.position, _vector.sub( camera.position ).normalize() );
+				ray = new THREE.Raycaster( window.ori, window.dir.normalize());//camera.position, _vector.sub( camera.position ).normalize() );
+				//ray = new THREE.Raycaster( camera.position, _vector.sub( camera.position ).normalize() );
 				intersection = ray.intersectObject( intersect_plane );
 				mouse_position.copy( intersection[0].point );
 			}
@@ -370,10 +398,20 @@
 </head>
 
 <body>
+    <div style="visibility:hidden">
 	<div id="heading">
 		<h1>Jenga</h1>
-		<p>Click & drag on the blocks to move them around.</p>
+	<div id="leap">Leap Data
 	</div>
+	<div id="mouse">Mouse Data
+	</div>
+	<div id="trans">Trans Data
+	</div>
+	<div id="vec">Vec Data
+	</div>
+	</div>
+	</div>
+
 	<div id="viewport"></div>
 </body>
 
