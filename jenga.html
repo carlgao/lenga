@@ -42,6 +42,13 @@
 		renderer, render_stats, physics_stats, scene, dir_light, am_light, camera,
 		table, blocks = [], table_material, block_material, intersect_plane,
 		selected_block = null, mouse_position = new THREE.Vector3, block_offset = new THREE.Vector3, _i, _v3 = new THREE.Vector3;
+
+	var material = new THREE.LineBasicMaterial({
+		color: 0xff0000
+	});
+
+	// And here begins the defilement of the global namespace
+	var fingers = new Array();
 	
 	initScene = function() {
 		renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -143,6 +150,15 @@
 		table.position.y = -.5;
 		table.receiveShadow = true;
 		scene.add( table );
+
+		// ADD A RANDOM ASS LINE
+		var geometry = new THREE.Geometry();
+		geometry.vertices.push(new THREE.Vector3(-10, 0, 0));
+		geometry.vertices.push(new THREE.Vector3(0, 10, 0));
+		geometry.vertices.push(new THREE.Vector3(10, 0, 0));
+
+		var line = new THREE.Line(geometry, material);
+		scene.add(line);
 		
 		createTower();
 		
@@ -268,6 +284,36 @@
 	})();
 	
 	window.onload = initScene;
+
+	controller.loop(function(frame) {
+		
+		if (frame.pointables.length > 0) { 
+
+			// Clear out all of the old fingers
+			fingers = new Array();
+
+			for (var i = 0; i < frame.pointables.length; i++) {
+
+				var curr = frame.pointables[i];
+				var geometry = new THREE.Geometry();
+				console.log(curr.tipPosition);
+				geometry.vertices.push(new THREE.Vector3(curr.direction.x, 0, curr.direction.z));
+				geometry.vertices.push(new THREE.Vector3(0, curr.direction.y, curr.direction.z));
+				var line = new THREE.Line(geometry, material);
+				fingers.push(line);
+
+			}	
+
+			// Reconstruct the lines
+			for (var i = 0; i < fingers.length; i++) {
+
+				scene.add(fingers[i]);
+
+			}
+
+		}
+
+	});
 	
 	</script>
 </head>
