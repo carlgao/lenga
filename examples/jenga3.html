@@ -123,9 +123,9 @@
 		);
 		table.position.y = -.5;
 		table.receiveShadow = true;
-		scene.add( table );
+		//scene.add( table );
 		
-		createTower();
+		//createTower();
 		
 		intersect_plane = new THREE.Mesh(
 			new THREE.PlaneGeometry( 150, 150 ),
@@ -147,7 +147,7 @@
 	    // LEAP
       Leap.loop(function(frame) {
 
-        if (window.ii > 90000) break;
+        if (window.ii > 90000) return;
         else ii++;
         var fingerIds = {};
         var handIds = {};
