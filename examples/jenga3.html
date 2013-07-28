@@ -147,8 +147,8 @@
 	    // LEAP
       Leap.loop(function(frame) {
 
-        if (window.ii > 90000) return;
-        else ii++;
+        if (window.ii > 900) return;
+        else window.ii++;
         var fingerIds = {};
         var handIds = {};
 
@@ -164,8 +164,8 @@
           var origin = new THREE.Vector3(pos[0], pos[1], pos[2]);
           var direction = new THREE.Vector3(dir[0], dir[1], dir[2]);
 
-          console.log("origin: ", origin);
-          console.log("direction: ", direction);
+          //console.log("origin: ", origin);
+          //console.log("direction: ", direction);
           if (!finger) {
             finger = new THREE.ArrowHelper(origin, direction, 40, Math.random() * 0xffffff);
             fingers[pointable.id] = finger;
@@ -177,10 +177,10 @@
 
 		  fingerIds[pointable.id] = true;
         }
-        console.log("fingerIds: ", fingerIds);
-        console.log("fingers: ", fingers);
+        //console.log("fingerIds: ", fingerIds);
+        //console.log("fingers: ", fingers);
         for (var fingerId in fingers) {
-        	console.log(fingerId);
+        	//console.log(fingerId);
           if (!fingerIds[fingerId]) {
             scene.remove(fingers[fingerId]);
             delete fingers[fingerId];
