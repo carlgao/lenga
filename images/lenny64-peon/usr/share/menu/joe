@@ -1,0 +1,1 @@
+?package(joe): needs="text" section="Apps/Editors" title="Joe" command="/usr/bin/joe"

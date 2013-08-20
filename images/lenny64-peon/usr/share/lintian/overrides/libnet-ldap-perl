@@ -1,0 +1,2 @@
+# that line contains an URL that cannot be broken
+libnet-ldap-perl: manpage-has-errors-from-man usr/share/man/man3/Net::LDAP::FAQ.3pm.gz 682: warning [p 8, 9.3i]: can't break line

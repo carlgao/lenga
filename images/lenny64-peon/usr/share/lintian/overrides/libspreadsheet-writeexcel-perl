@@ -1,0 +1,1 @@
+libspreadsheet-writeexcel-perl: manpage-has-errors-from-man usr/share/man/man3/Spreadsheet::WriteExcel.3pm.gz 4475: warning [p 74, 2.5i]: can't break line

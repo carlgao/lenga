@@ -1,0 +1,26 @@
+[python-package]
+format = 1
+python-version = all
+[pycentral]
+version = 0.6.7
+[files]
+/usr/share/pyshared/Gnuplot=d
+/usr/share/pyshared/Gnuplot/gp_win32.py=f
+/usr/share/pyshared/Gnuplot/termdefs.py=f
+/usr/share/pyshared/Gnuplot/Errors.py=f
+/usr/share/pyshared/Gnuplot/__init__.py=f
+/usr/share/pyshared/Gnuplot/gnuplot_Suites.py=f
+/usr/share/pyshared/Gnuplot/gp_mac.py=f
+/usr/share/pyshared/Gnuplot/gp_macosx.py=f
+/usr/share/pyshared/Gnuplot/_Gnuplot.py=f
+/usr/share/pyshared/Gnuplot/gp_cygwin.py=f
+/usr/share/pyshared/Gnuplot/test.py=f
+/usr/share/pyshared/Gnuplot/gp.py=f
+/usr/share/pyshared/Gnuplot/PlotItems.py=f
+/usr/share/pyshared/Gnuplot/gp_unix.py=f
+/usr/share/pyshared/Gnuplot/demo.py=f
+/usr/share/pyshared/Gnuplot/utils.py=f
+/usr/share/pyshared/Gnuplot/gp_java.py=f
+/usr/share/pyshared/Gnuplot/funcutils.py=f
+/usr/share/pyshared/gnuplot_py-1.8.egg-info=f
+/usr/share/pyshared/datafile.py=f

@@ -1,0 +1,41 @@
+[python-package]
+format = 1
+python-version = current, >= 2.4
+[pycentral]
+version = 0.6.7
+[files]
+/usr/share/fail2ban/common/protocol.py=f
+/usr/share/fail2ban/common/version.py=f
+/usr/share/fail2ban/common/__init__.py=f
+/usr/share/fail2ban/client/fail2banreader.py=f
+/usr/share/fail2ban/client/beautifier.py=f
+/usr/share/fail2ban/client/configparserinc.py=f
+/usr/share/fail2ban/client/configurator.py=f
+/usr/share/fail2ban/client/configreader.py=f
+/usr/share/fail2ban/client/actionreader.py=f
+/usr/share/fail2ban/client/csocket.py=f
+/usr/share/fail2ban/client/jailsreader.py=f
+/usr/share/fail2ban/client/__init__.py=f
+/usr/share/fail2ban/client/filterreader.py=f
+/usr/share/fail2ban/client/jailreader.py=f
+/usr/share/fail2ban/server/jail.py=f
+/usr/share/fail2ban/server/failmanager.py=f
+/usr/share/fail2ban/server/actions.py=f
+/usr/share/fail2ban/server/filtergamin.py=f
+/usr/share/fail2ban/server/iso8601.py=f
+/usr/share/fail2ban/server/banmanager.py=f
+/usr/share/fail2ban/server/jailthread.py=f
+/usr/share/fail2ban/server/mytime.py=f
+/usr/share/fail2ban/server/jails.py=f
+/usr/share/fail2ban/server/datetemplate.py=f
+/usr/share/fail2ban/server/failregex.py=f
+/usr/share/fail2ban/server/server.py=f
+/usr/share/fail2ban/server/ticket.py=f
+/usr/share/fail2ban/server/filter.py=f
+/usr/share/fail2ban/server/asyncserver.py=f
+/usr/share/fail2ban/server/transmitter.py=f
+/usr/share/fail2ban/server/action.py=f
+/usr/share/fail2ban/server/__init__.py=f
+/usr/share/fail2ban/server/filterpoll.py=f
+/usr/share/fail2ban/server/datedetector.py=f
+/usr/share/fail2ban/server/faildata.py=f

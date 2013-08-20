@@ -1,0 +1,4 @@
+?package(nn):\
+	needs="text" section="Applications/Network/Communication"\
+	title="nn" longtitle="No news is good news, but nn is better"\
+	command="/usr/bin/nn"

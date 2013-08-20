@@ -1,0 +1,1 @@
+?package(ncftp):needs="text" section="Apps/Net" title="ncftp" command="/usr/bin/ncftp3"  hints="File transfer"

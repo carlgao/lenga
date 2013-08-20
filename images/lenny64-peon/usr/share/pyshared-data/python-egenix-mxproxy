@@ -1,0 +1,23 @@
+[python-package]
+format = 1
+python-version = 2.4, 2.5
+[pycentral]
+version = 0.6.7
+[files]
+/usr/share/pyshared/mx=d
+/usr/share/pyshared/mx/Proxy=d
+/usr/share/pyshared/mx/Proxy/__init__.py=f
+/usr/share/pyshared/mx/Proxy/mxProxy=d
+/usr/share/pyshared/mx/Proxy/mxProxy/test.py=f
+/usr/share/pyshared/mx/Proxy/mxProxy/__init__.py=f
+/usr/share/pyshared/mx/Proxy/mxProxy/testvlad.py=f
+/usr/share/pyshared/mx/Proxy/mxProxy/weakreftest.py=f
+/usr/share/pyshared/mx/Proxy/Proxy.py=f
+/usr/lib/python2.4/site-packages/mx=d
+/usr/lib/python2.4/site-packages/mx/Proxy=d
+/usr/lib/python2.4/site-packages/mx/Proxy/mxProxy=d
+/usr/lib/python2.4/site-packages/mx/Proxy/mxProxy/mxProxy.so=f
+/usr/lib/python2.5/site-packages/mx=d
+/usr/lib/python2.5/site-packages/mx/Proxy=d
+/usr/lib/python2.5/site-packages/mx/Proxy/mxProxy=d
+/usr/lib/python2.5/site-packages/mx/Proxy/mxProxy/mxProxy.so=f

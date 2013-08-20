@@ -1,0 +1,4 @@
+libsoap-lite-perl: manpage-has-errors-from-man usr/share/man/man3/OldDocs::SOAP::Lite.3pm.gz 2296: warning [p 29, 8.0i]: can't break line
+libsoap-lite-perl: manpage-has-errors-from-man usr/share/man/man3/SOAP::Lite.3pm.gz 1810: warning [p 23, 9.2i]: can't break line
+libsoap-lite-perl: manpage-has-errors-from-man usr/share/man/man3/SOAP::Lite::Packager.3pm.gz 220: warning [p 2, 4.5i]: can't break line
+libsoap-lite-perl: manpage-has-errors-from-man usr/share/man/man3/SOAP::Packager.3pm.gz 220: warning [p 2, 4.5i]: can't break line

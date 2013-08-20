@@ -1,0 +1,2 @@
+grub: statically-linked-binary ./usr/bin/mbchk
+grub: statically-linked-binary ./usr/sbin/grub

@@ -1,0 +1,11 @@
+[python-package]
+format = 1
+python-version = 2.4, 2.5
+[pycentral]
+version = 0.6.7
+[files]
+/usr/lib/python2.5/site-packages/pycurl.so=f
+/usr/lib/python2.4/site-packages/pycurl.so=f
+/usr/share/pyshared/pycurl-7.18.2.egg-info=f
+/usr/share/pyshared/curl=d
+/usr/share/pyshared/curl/__init__.py=f

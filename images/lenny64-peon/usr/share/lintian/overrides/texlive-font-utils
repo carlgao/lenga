@@ -1,0 +1,4 @@
+texlive-font-utils: zero-byte-file-in-doc-directory
+texlive-font-utils: extra-license-file
+texlive-font-utils: script-not-executable
+texlive-font-utils: wrong-name-for-upstream-changelog

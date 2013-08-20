@@ -1,0 +1,2 @@
+?package(mytop):needs="text" section="Applications/Data Management"\
+  title="mytop" command="/usr/bin/mytop"

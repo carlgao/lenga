@@ -1,0 +1,34 @@
+# Fortran 90 language definition file
+#
+# Author: André Simon
+#   Mail: andre.simon1@gmx.de
+#   Date: 30.03.03
+# ------------------------------------------
+# This file is a part of highlight, a free source code converter released under the GPL.
+#
+# The file is used to describe keywords and special symbols of programming languages.
+# See README in the highlight directory for details.
+#
+# New definition files for future releases of highlight are always appreciated ;)
+#
+# ----------
+# andre.simon1@gmx.de
+# http:/www.andre-simon.de/
+
+$IGNORECASE=false
+
+$STRINGDELIMITERS=" '
+
+$SL_COMMENT=!
+
+$KW_LIST(kwb)= INTEGER REAL DOUBLE PRECISION COMPLEX LOGICAL CHARACTER
+
+$KW_LIST(kwa)=ACCEPT ENDMAP PAUSE   ASSIGN ENDSTRUCTURE POINTER   AUTOMATIC ENDUNION PRINT   BACKSPACE ENTRY 
+PROGRAM   BLOCKDATA EQUIVALENCE READ   BYTE EXTERNAL READONLY   CALL FIND REAL   CHARACTER FORMAT RECORD   
+CLOSE FUNCTION RETURN   COMMON GOTO REWIND   COMPLEX IF REWRITE   CONTINUE IMPLICIT SAVE   DATA IMPLICITNONE 
+SHARED   DECODE IMPLICITUNDEFINED STATIC   DEFINEFILE INCLUDE STOP   DELETE INQUIRE STRUCTURE   DIMENSION 
+INTEGER SUBROUTINE   DO INTRINSIC THEN   DOUBLECOMPLEX KEY TO   DOUBLEPRECISION LOGICAL TYPE   ELSE MAP 
+UNDEFINED   ELSEIF NAMELIST UNION   ENCODE NONE UNLOCK   END NOSPANBLOCKS VIRTUAL   ENDDO OPEN VOLATILE   
+ENDFILE OPTIONS WHILE   ENDIF PARAMETER WRITE    
+
+$SYMBOLS= ( ) [ ] { } , ; : & | < > - + = / * % + -

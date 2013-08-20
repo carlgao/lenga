@@ -1,0 +1,1 @@
+?package(pydb):needs="text" title="pydb" section="Apps/Programming" command="/usr/bin/pydb" hints="Debuggers"

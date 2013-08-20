@@ -1,0 +1,9 @@
+libmail-box-perl: manpage-has-errors-from-man usr/share/man/man3/Mail::Box::Dbx::Message.3pm.gz 323: warning [p 3, 1.8i]: can't break line
+libmail-box-perl: manpage-has-errors-from-man usr/share/man/man3/Mail::Box::Dir::Message.3pm.gz 332: warning [p 3, 4.2i]: can't break line
+libmail-box-perl: manpage-has-errors-from-man usr/share/man/man3/Mail::Box::File::Message.3pm.gz 303: warning [p 3, 0.2i]: can't break line
+libmail-box-perl: manpage-has-errors-from-man usr/share/man/man3/Mail::Box::IMAP4::Message.3pm.gz 323: warning [p 3, 3.0i]: can't break line
+libmail-box-perl: manpage-has-errors-from-man usr/share/man/man3/Mail::Box::MH::Message.3pm.gz 245: warning [p 2, 2.3i]: can't break line
+libmail-box-perl: manpage-has-errors-from-man usr/share/man/man3/Mail::Box::Maildir::Message.3pm.gz 244: warning [p 2, 2.2i]: can't break line
+libmail-box-perl: manpage-has-errors-from-man usr/share/man/man3/Mail::Box::Mbox::Message.3pm.gz 243: warning [p 2, 2.0i]: can't break line
+libmail-box-perl: manpage-has-errors-from-man usr/share/man/man3/Mail::Box::POP3::Message.3pm.gz 293: warning [p 2, 10.0i]: can't break line
+libmail-box-perl: manpage-has-errors-from-man usr/share/man/man3/Mail::Message::TransferEnc::QuotedPrint.3pm.gz 253: warning [p 2, 4.8i]: can't break line

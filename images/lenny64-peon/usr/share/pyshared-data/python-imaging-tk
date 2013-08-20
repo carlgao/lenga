@@ -1,0 +1,12 @@
+[python-package]
+format = 1
+python-version = 2.4, 2.5
+[pycentral]
+version = 0.6.7
+[files]
+/usr/share/pyshared/PIL=d
+/usr/share/pyshared/PIL/ImageTk.py=f
+/usr/lib/python2.4/site-packages/PIL=d
+/usr/lib/python2.4/site-packages/PIL/_imagingtk.so=f
+/usr/lib/python2.5/site-packages/PIL=d
+/usr/lib/python2.5/site-packages/PIL/_imagingtk.so=f

@@ -1,0 +1,6 @@
+?package(bwbasic):\
+ needs="text"\
+ section="Applications/Programming"\
+ longtitle="Bywater BASIC Interpreter"\
+ title="bwBASIC"\
+ command="bwbasic"

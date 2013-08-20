@@ -1,0 +1,4 @@
+texlive-base-bin: zero-byte-file-in-doc-directory
+texlive-base-bin: extra-license-file
+texlive-base-bin: script-not-executable
+texlive-base-bin: wrong-name-for-upstream-changelog

@@ -1,0 +1,7 @@
+[python-package]
+format = 1
+python-version = 2.4, 2.5
+[pycentral]
+version = 0.6.7
+[files]
+/usr/share/pyshared/pkg_resources.py=f

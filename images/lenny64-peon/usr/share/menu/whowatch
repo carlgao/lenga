@@ -1,0 +1,2 @@
+?package(whowatch):needs="text" section="Apps/System"\
+  title="whowatch" command="/usr/bin/whowatch"

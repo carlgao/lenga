@@ -1,0 +1,16 @@
+# Index created by AutoSplit for blib/lib/CGI/XMLForm/Path.pm
+#    (file acts as timestamp)
+package CGI::XMLForm::Path;
+sub new  ;
+sub buildSelf  ;
+sub rebuildSelf  ;
+sub isRelative  ;
+sub isRepeat  ;
+sub isChildPath  ;
+sub Attrib  ;
+sub isEqual  ;
+sub Append  ;
+sub Pop  ;
+sub Path  ;
+sub FullPath  ;
+1;

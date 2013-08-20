@@ -1,0 +1,17 @@
+?package(emacs22):\
+  needs="X11"\
+  section="Apps/Editors"\
+  title="Emacs 22 (X11)"\
+  command="/usr/bin/emacs22"\
+  icon16x16="/usr/share/emacs/22.2/etc/images/icons/emacs_16.xpm"\
+  icon32x32="/usr/share/emacs/22.2/etc/images/icons/emacs_32.xpm"\
+  hints="Text"
+
+?package(emacs22):\
+  needs="text"\
+  section="Apps/Editors"\
+  title="Emacs 22 (text)"\
+  command="/usr/bin/emacs22 -nw"\
+  icon16x16="/usr/share/emacs/22.2/etc/images/icons/emacs_16.xpm"\
+  icon32x32="/usr/share/emacs/22.2/etc/images/icons/emacs_32.xpm"\
+  hints="Text"

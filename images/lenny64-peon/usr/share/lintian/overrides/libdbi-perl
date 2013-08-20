@@ -1,0 +1,5 @@
+# URLs
+libdbi-perl: manpage-has-errors-from-man usr/share/man/man3/Roadmap.3pm.gz 427: warning [p 5, 6.2i]: can't break line
+libdbi-perl: manpage-has-errors-from-man usr/share/man/man3/DBD::Gofer.3pm.gz 601: warning [p 8, 5.8i]: can't break line
+libdbi-perl: manpage-has-errors-from-man usr/share/man/man3/DBI::Const::GetInfo::ODBC.3pm.gz 164: warning [p 1, 4.2i]: can't break line
+libdbi-perl: manpage-has-errors-from-man usr/share/man/man3/DBI::DBD.3pm.gz 895: warning [p 12, 1.2i]: can't break line

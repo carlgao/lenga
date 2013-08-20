@@ -1,0 +1,128 @@
+# libwmf.defoma: Generate XML fontmap for libwmf.  -*- Perl -*-
+
+@ACCEPT_CATEGORIES = qw(truetype type1);
+
+package libwmf0_2_7;
+use Debian::Defoma::Common;
+use Debian::Defoma::Id;
+
+my $PkgDir = "$ROOTDIR/libwmf0.2-7.d";
+my $Fontmap = "$PkgDir/fontmap";
+my $Id;
+
+sub init {
+    $Id ||= defoma_id_open_cache();
+
+    return 0;
+}
+
+sub register {
+    my($font, @hints) = @_;
+
+    my $hint = parse_hints_start(@hints);
+    defined($hint->{FontName}) or return 1;
+    my $fontname = $hint->{FontName};
+    $fontname =~ s/ .*//;
+    my $priority = $hint->{Priority} || 20;
+
+    defoma_id_register($Id, type => 'real', font => $font,
+		       id => $fontname, priority => $priority,
+		       hints => join(' ', @hints));
+    if (defined($hint->{Alias})) {
+	for my $alias (split(/ /, $hint->{Alias})) {
+	    defoma_id_register($Id, type => 'alias', font => $font,
+			       id => $alias, priority => $priority,
+			       origin => $fontname);
+	}
+    }
+
+    return 0;
+}
+
+sub unregister {
+    my($font) = @_;
+
+    defoma_id_unregister($Id, type => 'alias', font => $font);
+    defoma_id_unregister($Id, type => 'real',  font => $font);
+
+    return 0;
+}
+
+sub term {
+    if ($Id) {
+	open(FONTMAP, ">$Fontmap.tmp") or die "$Fontmap.tmp: $!\n";
+
+	print FONTMAP "<?xml version=\"1.0\"?>\n";
+	print FONTMAP "<fontmap>\n";
+
+	for my $i (defoma_id_grep_cache($Id, 'installed', sorttype => 'p')) {
+	    my $hint = parse_hints_start(defoma_id_get_hints($Id, $i));
+	    my @attrs;
+
+	    push(@attrs, format => $Id->{e_category}->[$i]);
+
+	    push(@attrs, metrics => $hint->{AFM})
+		if defined($hint->{AFM});
+
+	    push(@attrs, glyphs => $Id->{e_font}->[$i]);
+
+	    push(@attrs, name => $Id->{e_id}->[$i]);
+
+	    my $fullname = $Id->{e_id}->[$i];
+	    # ipa_font_sys_map() determines whether a font is italic by
+	    # searching the full name.
+	    $fullname .= " ($1)"
+		if $fullname !~ /Italic|Oblique/
+		   && defined($hint->{Shape})
+		   && $hint->{Shape} =~ /(Italic|Oblique)/;
+	    push @attrs, fullname => $fullname;
+
+	    my $familyname;
+	    if (defined($hint->{Family})) {
+		$familyname = $hint->{Family};
+		$familyname =~ tr/_/ /;
+	    } else {
+		$familyname = $Id->{e_id}->[$i];
+	    }
+	    push(@attrs, familyname => $familyname);
+
+	    push(@attrs, weight => $hint->{Weight})
+		if defined($hint->{Weight});
+
+	    push(@attrs, version => '0.1');
+
+	    print FONTMAP "  <font";
+	    while (my($attr, $value) = splice(@attrs, 0, 2)) {
+		print FONTMAP " $attr=\"$value\"";
+	    }
+	    print FONTMAP "/>\n";
+	}
+
+	print FONTMAP "</fontmap>\n";
+
+	close(FONTMAP) or die "$Fontmap.tmp: $!\n";
+
+	# Atomically replace old fontmap.
+	rename("$Fontmap.tmp", $Fontmap) or die "$Fontmap: $!\n" ;
+
+	defoma_id_close_cache($Id);
+	undef($Id);
+    }
+
+    return 0;
+}
+
+sub dispatch {
+    my($command, @args) = @_;
+
+    if (my $code = __PACKAGE__->can($command)) {
+	return $code->(@args);
+    } else {
+	return 0;
+    }
+}
+
+*truetype = *dispatch;
+*type1 = *dispatch;
+
+1;

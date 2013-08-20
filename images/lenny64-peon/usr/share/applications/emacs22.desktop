@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Emacs 22 (X11)
+GenericName=Emacs
+Comment=GNU Emacs Text Editor 22
+Exec=/usr/bin/emacs22
+TryExec=emacs22
+Terminal=false
+Type=Application
+Icon=/usr/share/emacs/22.2/etc/images/icons/emacs_48.png
+Categories=Application;Utility;TextEditor;
+MimeType=text/plain

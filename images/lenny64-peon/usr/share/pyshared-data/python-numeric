@@ -1,0 +1,26 @@
+[python-package]
+format = 1
+python-version = 2.4, 2.5
+[pycentral]
+version = 0.6.7
+[files]
+/usr/share/pyshared/Numeric=d
+/usr/share/pyshared/Numeric/Numeric-24.2.egg-info=f
+/usr/share/pyshared/Numeric/UserArray.py=f
+/usr/share/pyshared/Numeric/ArrayPrinter.py=f
+/usr/share/pyshared/Numeric/Numeric.py=f
+/usr/share/pyshared/Numeric/numeric_version.py=f
+/usr/share/pyshared/Numeric/Numeric_headers=d
+/usr/share/pyshared/Numeric/Numeric_headers/__init__.py=f
+/usr/share/pyshared/Numeric/Precision.py=f
+/usr/share/pyshared/Numeric.pth=f
+/usr/lib/python2.4/site-packages/Numeric=d
+/usr/lib/python2.4/site-packages/Numeric/_numpy.so=f
+/usr/lib/python2.4/site-packages/Numeric/umath.so=f
+/usr/lib/python2.4/site-packages/Numeric/multiarray.so=f
+/usr/lib/python2.4/site-packages/Numeric/arrayfns.so=f
+/usr/lib/python2.5/site-packages/Numeric=d
+/usr/lib/python2.5/site-packages/Numeric/_numpy.so=f
+/usr/lib/python2.5/site-packages/Numeric/umath.so=f
+/usr/lib/python2.5/site-packages/Numeric/multiarray.so=f
+/usr/lib/python2.5/site-packages/Numeric/arrayfns.so=f

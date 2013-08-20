@@ -9,6 +9,7 @@
 	
 	<script type="text/javascript" src="js/three.min.js"></script>
 	<script type="text/javascript" src="js/stats.js"></script>
+	<script type="text/javascript" src="js/arrow.js"></script>
 	<script type="text/javascript" src="../physi.js"></script>
     <script src="//js.leapmotion.com/0.2.0-beta1/leap.min.js"></script>
 	
@@ -24,6 +25,23 @@
 		table, blocks = [], table_material, block_material, intersect_plane,
 		selected_block = null, mouse_position = new THREE.Vector3, block_offset = new THREE.Vector3, _i, _v3 = new THREE.Vector3;
 
+
+asdf = function(selected_block) {
+
+				if ( selected_block !== null ) {
+					var rando = new THREE.Vector3(15, 10, 15);
+					selected_block.setLinearVelocity(rando.multiplyScalar(30));
+					
+					// Reactivate all of the blocks
+					_v3.set( 0, 0, 0 );
+					for ( _i = 0; _i < blocks.length; _i++ ) {
+						blocks[_i].applyCentralImpulse( _v3 );
+					}
+				}
+
+				scene.simulate( undefined, 1 );
+				physics_stats.update();
+			}
 	
 	initScene = function() {
 		renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -45,14 +63,14 @@
 		document.getElementById( 'viewport' ).appendChild( physics_stats.domElement );*/
 		
 		scene = new Physijs.Scene({ fixedTimeStep: 1 / 120 });
-		scene.setGravity(new THREE.Vector3( 0, -200, 0 ));
+		scene.setGravity(new THREE.Vector3( 0, -20, 0 ));
 		scene.addEventListener(
 			'update',
 			function() {
 
 				if ( selected_block !== null ) {
-					
-					_v3.copy( mouse_position ).add( block_offset ).sub( selected_block.position ).multiplyScalar( 10 );
+					var rando = new THREE.Vector3(10, 30, 10);
+					_v3.copy( mouse_position ).add( block_offset ).add(rando).sub( selected_block.position ).multiplyScalar( 300 );
 					_v3.y = 0;
 					selected_block.setLinearVelocity( _v3 );
 					
@@ -107,12 +125,12 @@
 		
 		// Materials
 		table_material = Physijs.createMaterial(
-			new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture( 'images/wood.jpg' ), ambient: 0xFF0000 }),
+			new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture( 'images/road.jpg' ), ambient: 0xFF0000 }),
 			.9, // high friction
 			.2 // low restitution
 		);
 		table_material.map.wrapS = table_material.map.wrapT = THREE.RepeatWrapping;
-		table_material.map.repeat.set( 5, 5 );
+		table_material.map.repeat.set( 1, 1 );
 		
 		block_material = Physijs.createMaterial(
 			new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture( 'images/plywood.jpg' ), ambient: 0xFFFFFF }),
@@ -124,7 +142,7 @@
 		
 		// Table
 		table = new Physijs.BoxMesh(
-			new THREE.CubeGeometry(200, 1, 200),
+			new THREE.CubeGeometry(500, 1, 500),
 			table_material,
 			0, // mass
 			{ restitution: .2, friction: .8 }
@@ -158,7 +176,19 @@
         var fingerIds = {};
         var handIds = {};
 
-	
+	    if (frame.pointables[0] && frame.pointables[1]) {
+          var pointable = frame.pointables[0];
+          var pointable2 = frame.pointables[1];
+
+		  var pos = pointable.tipPosition;
+		  var pos2 = pointable2.tipPosition;
+		  var dir = pointable.direction;
+		  var dir2 = pointable2.direction;
+
+          window.ori = new THREE.Vector3(pos[0], pos[1], pos[2]);
+          //window.ori = new THREE.Vector3((pos[0] + pos2[0])/2, (pos[1] + pos2[1])/2, (pos[2] + pos2[2])/2);
+          window.dir = new THREE.Vector3(dir[0], dir[1], dir[2]);
+        }
 
         for (var index = 0; index < Math.min(2, frame.pointables.length); index++) {
 
@@ -173,8 +203,8 @@
 
 	  if (index == 0) {
 	    document.getElementById('leap').innerHTML = pos + " ";
-            window.ori = origin;
-	    window.dir = direction;
+            //window.ori = origin;
+            //window.dir = direction;
 			var ray, intersection,
 				i, scalar;
 			
@@ -197,7 +227,7 @@
           //console.log("origin: ", origin);
           //console.log("direction: ", direction);
           if (!finger) {
-            finger = new THREE.ArrowHelper(direction, origin, 40, Math.random() * 0xffffff);
+            finger = new THREE.ArrowHelper(direction, origin, 40, 0.5 * 0xffffff);
             fingers[pointable.id] = finger;
             scene.add(finger);
           }
@@ -236,6 +266,64 @@
 		return function() {
 			var i, j, rows = 16,
 				block;
+
+			for ( i = 0; i < rows; i++ ) {
+				for ( j = 0; j < 3; j++ ) {
+					block = new Physijs.BoxMesh( block_geometry, block_material );
+					block.position.y = 70 + (block_height / 2) + block_height * i;
+					if ( i % 2 === 0 ) {
+						block.rotation.y = Math.PI / 2.01; // #TODO: There's a bug somewhere when this is to close to 2
+						block.position.x = block_offset * j - ( block_offset * 3 / 2 - block_offset / 2 );
+					} else {
+						block.position.z = block_offset * j - ( block_offset * 3 / 2 - block_offset / 2 );
+					}
+                    block.position.x -= 70;
+                    block.position.z += 140;
+					block.receiveShadow = true;
+					block.castShadow = true;
+					scene.add( block );
+					blocks.push( block );
+				}
+			}
+
+			for ( i = 0; i < rows; i++ ) {
+				for ( j = 0; j < 3; j++ ) {
+					block = new Physijs.BoxMesh( block_geometry, block_material );
+					block.position.y = 50 + (block_height / 2) + block_height * i;
+					if ( i % 2 === 0 ) {
+						block.rotation.y = Math.PI / 2.01; // #TODO: There's a bug somewhere when this is to close to 2
+						block.position.x = block_offset * j - ( block_offset * 3 / 2 - block_offset / 2 );
+					} else {
+						block.position.z = block_offset * j - ( block_offset * 3 / 2 - block_offset / 2 );
+					}
+                    block.position.x -= 70;
+                    block.position.z += 70;
+					block.receiveShadow = true;
+					block.castShadow = true;
+					scene.add( block );
+					blocks.push( block );
+					asdf(block);
+				}
+			}
+
+			for ( i = 0; i < rows; i++ ) {
+				for ( j = 0; j < 3; j++ ) {
+					block = new Physijs.BoxMesh( block_geometry, block_material );
+					block.position.y = 50 + (block_height / 2) + block_height * i;
+					if ( i % 2 === 0 ) {
+						block.rotation.y = Math.PI / 2.01; // #TODO: There's a bug somewhere when this is to close to 2
+						block.position.x = block_offset * j - ( block_offset * 3 / 2 - block_offset / 2 );
+					} else {
+						block.position.z = block_offset * j - ( block_offset * 3 / 2 - block_offset / 2 );
+					}
+                    block.position.x += 70;
+                    block.position.z -= 70;
+					block.receiveShadow = true;
+					block.castShadow = true;
+					scene.add( block );
+					blocks.push( block );
+				}
+			}
 			
 			for ( i = 0; i < rows; i++ ) {
 				for ( j = 0; j < 3; j++ ) {
@@ -394,10 +482,25 @@
 	
 	</script>
 
+    <link href='http://fonts.googleapis.com/css?family=Nosifer' rel='stylesheet' type='text/css'>
+
+
+    <style>
+        h1 {
+        font-family: 'Nosifer', cursive;
+        text-align: center;
+        font-size:600%;
+        color: black
+    }
+</style>
 
 </head>
 
 <body>
+    <div style="margin-top:-5px; position:absolute; margin-left:50px">
+    <h1>JENGZILLA</h1>
+</div>
+    
     <div style="visibility:hidden">
 	<div id="heading">
 		<h1>Jenga</h1>

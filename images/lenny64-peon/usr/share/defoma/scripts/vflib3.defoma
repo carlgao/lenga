@@ -1,0 +1,160 @@
+#
+# vflib3.defoma - defoma script for VFlib3
+#
+
+@ACCEPT_CATEGORIES = ('truetype', 'type1');
+
+package vflib3;
+use strict;
+use POSIX;
+use File::Basename;
+
+use vars qw($ROOTDIR);
+
+use Debian::Defoma::Common;
+use Debian::Defoma::Font;
+use Debian::Defoma::Id;
+import Debian::Defoma::Font;
+import Debian::Defoma::Common;
+import Debian::Defoma::Id;
+
+my $PkgDir = $ROOTDIR . '/vflib3.d';
+my $VFLIBCAP = $PkgDir . '/vflibcap';
+my $GENERALFAMILY = $PkgDir . '/vflibcap.general-family';
+my $Id;
+
+sub init {
+  unless ($Id) {
+    $Id = defoma_id_open_cache();
+  }
+}
+
+sub tt_register {
+  my $font = shift;
+  my @hints = defoma_font_get_hints('truetype', $font);
+  my $h = parse_hints_start('', @hints);
+  $h->{Priority} = 20 if !defined($h->{Priority});
+  
+  defoma_id_register($Id,
+                     type => 'real', 
+                     font => $font,
+                     id => $h->{FontName},
+                     priority => $h->{Priority},
+                     hints => join(' ', @hints));
+}
+
+sub tt_unregister {
+  my $font = shift;
+  my ($name, $path, $suffix) = fileparse($font, '\..*'); 
+  
+  defoma_id_unregister($Id, type => 'real', font => $font);
+}
+
+sub t1_register {
+  my $font = shift;
+  my @hints = defoma_font_get_hints('type1', $font);
+  my $h = parse_hints_start('', @hints);
+  $h->{Priority} = 20 if !defined($h->{Priority});
+  
+  defoma_id_register($Id,
+                     type => 'real', 
+                     font => $font,
+                     id => $h->{FontName},
+                     priority => $h->{Priority},
+                     hints => join(' ', @hints));
+}
+
+sub t1_unregister {
+  my $font = shift;
+  my ($name, $path, $suffix) = fileparse($font, '\..*'); 
+  
+  defoma_id_unregister($Id, type => 'real', font => $font);
+}
+
+sub x_main {
+  my $type = shift;
+  my $file = "$VFLIBCAP.$type";
+  my @list = defoma_id_grep_cache($Id, 'installed');
+  my (%priority, %font);
+
+  open(F, ">$file.bak") or die "$file.bak: $!";
+  
+  foreach my $i (@list) {
+    my $font = $Id->{1}->[$i];
+    my @hints = defoma_id_get_hints($Id, $i);
+    my $h = parse_hints_start('', @hints);
+    $h->{Priority} = 20 if !defined($h->{Priority});
+    
+    print F ";;; $h->{FontName} Macro\n";
+    print F "(define-macro $h->{FontName}-Macro\n";
+    print F " (font-class $type)\n";
+    print F " (character-set \"$h->{Charset}\")\n" if defined($h->{Charset});
+# FIXME: ISO2022 is bad
+    print F " (encoding \"ISO2022 $h->{Encoding}\")\n" if defined($h->{Encoding});
+    print F " (font-file \"$font\")\n";
+    
+    if ($type eq "truetype") {
+      print F " (hinting \"on\")\n";
+    }
+    
+    print F ")\n\n";
+    print F ";;; $h->{FontName} Font\n";
+    print F "(define-macro $h->{FontName} $h->{FontName}-Macro)\n\n";
+
+    if (defined($h->{GeneralFamily})) {  
+      $priority{$h->{GeneralFamily}} = 0 if (!$priority{$h->{GeneralFamily}});
+      if ($priority{$h->{GeneralFamily}} < $h->{Priority} ) {
+        $priority{$h->{GeneralFamily}} = $h->{Priority};
+        $font{$h->{GeneralFamily}} = $h->{FontName};
+      }
+    }
+  }
+  close F;
+  rename "$file.bak", "$file"; 
+  
+  ### Debian GeneralFamily Font  ###
+  
+  open(F, ">$GENERALFAMILY.bak");
+  print F ";; Debian GeneralFamily Font\n";
+  foreach (keys %font) {
+    print F "(define-macro debian-vfont-$_ $font{$_}-Macro)\n";
+  }
+  close F;
+  rename "$GENERALFAMILY.bak", "$GENERALFAMILY";
+  defoma_id_close_cache($Id);
+  system("/usr/sbin/update-vflibcap -v");
+  
+  return 0;
+}
+
+  sub truetype {
+    my $com = shift;
+    if ($com eq 'init') {
+    return init();
+  } elsif ($com eq 'term') {
+    return x_main('truetype', @_);
+  } elsif ($com eq 'register') {
+    return tt_register(@_);
+  } elsif ($com eq 'unregister') {
+    return tt_unregister(@_);
+  } else {
+  }  
+  return 0;
+}
+
+sub type1 {
+  my $com = shift;
+  if ($com eq 'init') {
+    return init();
+  } elsif ($com eq 'term') {
+    return x_main('type1', @_);
+  } elsif ($com eq 'register') {
+    return t1_register(@_);
+  } elsif ($com eq 'unregister') {
+    return t1_unregister(@_);
+  } else {
+  }
+  return 0;
+}
+
+1;

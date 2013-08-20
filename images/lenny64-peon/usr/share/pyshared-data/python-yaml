@@ -1,0 +1,27 @@
+[python-package]
+format = 1
+python-version = 2.4, 2.5
+[pycentral]
+version = 0.6.7
+[files]
+/usr/share/pyshared/PyYAML-3.05.egg-info=f
+/usr/share/pyshared/yaml=d
+/usr/share/pyshared/yaml/constructor.py=f
+/usr/share/pyshared/yaml/composer.py=f
+/usr/share/pyshared/yaml/loader.py=f
+/usr/share/pyshared/yaml/error.py=f
+/usr/share/pyshared/yaml/serializer.py=f
+/usr/share/pyshared/yaml/__init__.py=f
+/usr/share/pyshared/yaml/tokens.py=f
+/usr/share/pyshared/yaml/reader.py=f
+/usr/share/pyshared/yaml/resolver.py=f
+/usr/share/pyshared/yaml/emitter.py=f
+/usr/share/pyshared/yaml/dumper.py=f
+/usr/share/pyshared/yaml/events.py=f
+/usr/share/pyshared/yaml/scanner.py=f
+/usr/share/pyshared/yaml/nodes.py=f
+/usr/share/pyshared/yaml/representer.py=f
+/usr/share/pyshared/yaml/parser.py=f
+/usr/share/pyshared/yaml/cyaml.py=f
+/usr/lib/python2.4/site-packages/_yaml.so=f
+/usr/lib/python2.5/site-packages/_yaml.so=f

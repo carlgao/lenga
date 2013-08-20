@@ -1,0 +1,4 @@
+texlive-bibtex-extra: zero-byte-file-in-doc-directory
+texlive-bibtex-extra: extra-license-file
+texlive-bibtex-extra: script-not-executable
+texlive-bibtex-extra: wrong-name-for-upstream-changelog

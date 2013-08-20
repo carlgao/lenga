@@ -1,0 +1,4 @@
+?package(gem):needs="text" section="Applications/Graphics"\
+  title="GEM" \
+  command="pd -lib Gem" \
+  icon="/usr/share/pixmaps/gem.xpm"

@@ -1,0 +1,26 @@
+ia32-libs: file-in-unusual-dir
+ia32-libs: non-standard-toplevel-dir emul/
+ia32-libs: binary-without-manpage ldd
+ia32-libs: binary-without-manpage lddlibc4
+ia32-libs: binary-without-manpage uname
+ia32-libs: postinst-has-useless-call-to-ldconfig
+ia32-libs: postrm-has-useless-call-to-ldconfig
+ia32-libs: unstripped-binary-or-object ./emul/ia32-linux/lib/libpthread-0.10.so
+ia32-libs: unstripped-binary-or-object ./emul/ia32-linux/lib/tls/libpthread-0.60.so
+ia32-libs: binary-or-shlib-defines-rpath
+ia32-libs: shared-lib-without-dependency-information ./emul/ia32-linux/lib/ld-2.3.2.so
+ia32-libs: shared-lib-without-dependency-information ./emul/ia32-linux/lib/tls/ld-2.3.2.so
+ia32-libs: duplicate-entry-in-shlibs-control-file libexpat
+ia32-libs: duplicate-entry-in-shlibs-control-file libstdc++
+ia32-libs: duplicate-entry-in-shlibs-control-file libimlib
+ia32-libs: unused-shlib-entry-in-control-file ia32-libs
+ia32-libs: shlib-missing-in-control-file libpcprofile.so lib32/libpcprofile.so
+ia32-libs: shlib-missing-in-control-file libSegFault.so lib32/libSegFault.so
+ia32-libs: shlib-missing-in-control-file libmemusage.so lib32/libmemusage.so
+ia32-libs: shlib-missing-in-control-file libxml2 usr/lib32/libxml2.so.2.6.16
+ia32-libs: old-fsf-address-in-copyright-file
+ia32-libs: shared-lib-without-dependency-information ./lib32/ld-2.3.2.so
+ia32-libs: unstripped-binary-or-object ./lib32/libpthread-0.10.so
+ia32-libs: shared-lib-without-dependency-information ./lib32/tls/ld-2.3.2.so
+ia32-libs: unstripped-binary-or-object ./lib32/tls/libpthread-0.60.so
+ia32-libs: packages-installs-file-to-usr-x11r6

@@ -1,0 +1,103 @@
+ Mode d'emploi: highlight [abcdefghijklmnopqrstuvwxyzACDEFHIKLNPRSTUVWXZ]
+                          [-i fichier d'entr�] [-o fichier de sortie]
+                          [-S syntaxe] [-O r�ertoire de sortie]
+                          [-B wildcard] [-t num] [-c fichier css de sortie]
+                          [-e fichier css de sortie] [-s style]
+                          [-D r�ertoire de highlight] [-u encoding]
+                          [fichiers d'entr�]
+
+ Converti le code source en fichiers HTML, XHTML, RTF, TeX, LaTeX ou XSL-FO avec
+ la mise en forme syntaxique (format� en (X)HTML grace aux feuille de style en
+ cacade (CSS)).
+
+ -B, --batch-recursive=<wc>     converti tout les fichiers correspondants;
+                                recherche r�ursive
+                                (Exemple: highlight -B '*.cpp')
+ -D, --data-dir=<chemin>        indique le chemin d'installation de highlight
+ -E, --add-data-dir=<chemin>    indique un autre chemin d'installation
+ -h, --help                     afficher cette aide
+ -H, --help-lang=<lang>         afficher l'aide en langue donn�                                <lang> = ["en", "es", "de", "fr"]
+ -i, --input=<file>             nom du fichier d'entr�
+ -o, --output=<file>            nom du fichier de sortie
+ -O, --outdir=<directory>       nom du r�ertoire de sortie
+ -S, --syntax=<type>            sp�ifie le type de code source
+ -v, --verbose                  affiche les informations de d�ug dans stderr
+ -P, --progress                 affiche les informations de progr� dans stdout
+ -q, --quiet                    cacher les informations de progr�
+ -p, --list-langs               affiche les langages install�s
+ -w, --list-themes              affiche les styles install�
+     --force                    generate output if language type is unknown
+     --version                  print version and copyright information
+
+
+ Output formats:
+
+ -A, --ansi                     generate terminal output (16 colours)
+ -L, --latex                    g��e un fichier LaTex
+ -M, --xterm256                 generate terminal output (256 colours)
+ -R, --rtf                      g��e un fichier RTF
+ -T, --tex                      g��e un fichier TeX
+ -X, --xhtml                    g��e un fichier XHTML 1.1
+ -Z, --xml                      g��e un fichier XML
+
+
+ Output formatting options:
+
+ -c, --style-outfile=<file>     nom du fichier de d�inition CSS
+ -d, --doc-title=<title>        document title
+ -e, --style-infile=<file>      fichier a inclure dans le fichier de sortie CSS
+ -I, --include-style            inclure la d�inition CSS dans le fichier
+ -f, --fragment                 omettre l'ent�e et le pied du fichier (X)HTML
+ -F, --reformat=<style>         reformate et indente la sortie dans le style
+                                donn� <style> = ['ansi', 'gnu', 'kr',
+                                'java', 'linux']
+ -j, --line-number-width        line number width incl. left padding
+ -k, --font=<font>              defines font (specific to output format)
+ -K, --font-size=<num?>         defines font size (specific to output format)
+ -l, --linenumbers              afficher les num�os de lignes dans le
+                                fichier de sortie
+ -m, --line-number-start=<cnt>  start line numbering with cnt (assumes -l)
+ -s, --style=<style>            sp�ifie le style CSS devant �re utilis� -t, --replace-tabs=<num>       remplace les tabulations par <num> espace(s)
+ -u, --encoding=<enc>           define output encoding type of HTML and XML
+                                formats, needs to match input file encoding;
+                                omit encoding info if enc=NONE
+ -V, --wrap-simple              wrap long lines without indenting function
+                                parameters and statements
+ -W, --wrap                     wrap long lines
+ -z, --zeroes                   fill leading space of line numbers with 0's
+
+
+ (X)HTML options:
+
+ -a, --anchors                  attache des ancres au num�os de lignes
+ -y, --anchor-prefix=<str>      define anchor name prefix
+ -N, --anchor-filename          use input file name as anchor name
+ -C, --print-index              cr� un fichier index de sortie avec des
+                                hyperliens vers les fichiers de sorties
+ -n, --ordered-list             print lines as ordered list items
+
+
+ LaTeX options:
+
+ -b, --babel                    disable Babel package shorthands
+ -r, --replace-quotes           remplace des guillemets par \dq{} (-f suppos�
+
+
+ RTF options:
+
+ -x, --page-size=<ps>           define page size (a3, a4, a5, b4, b5, b6, letter)
+
+
+ -i et -o seront ignor� si -b est employ� -t sera ignor�si -F est employ�
+ -r sera ignor�si -f n'est pas employ�
+ -c will be ignored if the output format does not support referenced style files.
+ Si aucun des fichiers d'entr� ou de sortie ne sont sp�ifi�, stdin et stdout
+ seront utilis� pour l'entr� ou la sortie.
+ Le HTML sera g��� si aucun des param�res -X, -T, -L, ou -R ne sont
+ employ�.
+ les s��teurs CSS sont d�inis dans highlight.css (highlight.sty pour LaTeX
+ et TeX) si aucuns des param�res -c ou -I ne sont employ�.
+ Le reformatage du code n'est possible que pour les fichiers d'entr�s C, C++,
+ C# et Java.
+
+ Mises a jour et information: http://www.andre-simon.de/

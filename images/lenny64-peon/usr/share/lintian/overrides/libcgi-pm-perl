@@ -1,0 +1,2 @@
+# that line contains an URL that cannot be broken
+libcgi-pm-perl: manpage-has-errors-from-man usr/share/man/man3/CGI::Cookie.3pm.gz 228: warning [p 2, 3.7i]: can't break line

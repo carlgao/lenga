@@ -151,15 +151,6 @@
 		table.receiveShadow = true;
 		scene.add( table );
 
-		// ADD A RANDOM ASS LINE
-		var geometry = new THREE.Geometry();
-		geometry.vertices.push(new THREE.Vector3(-10, 0, 0));
-		geometry.vertices.push(new THREE.Vector3(0, 10, 0));
-		geometry.vertices.push(new THREE.Vector3(10, 0, 0));
-
-		var line = new THREE.Line(geometry, material);
-		scene.add(line);
-		
 		createTower();
 		
 		intersect_plane = new THREE.Mesh(
@@ -283,7 +274,7 @@
 		};
 	})();
 	
-	window.onload = initScene;
+	 window.onload = initScene;
 
 	controller.loop(function(frame) {
 		
@@ -296,9 +287,8 @@
 
 				var curr = frame.pointables[i];
 				var geometry = new THREE.Geometry();
-				console.log(curr.tipPosition);
-				geometry.vertices.push(new THREE.Vector3(curr.direction.x, 0, curr.direction.z));
-				geometry.vertices.push(new THREE.Vector3(0, curr.direction.y, curr.direction.z));
+				geometry.vertices.push(new THREE.Vector3(curr.tipPosition[0] / 10, curr.tipPosition[1] / 10, curr.tipPosition[2] / 10));
+				geometry.vertices.push(new THREE.Vector3((curr.tipPosition[0]-5) / 10, (curr.tipPosition[1]-5) / 10, (curr.tipPosition[2]-5)/ 10));
 				var line = new THREE.Line(geometry, material);
 				fingers.push(line);
 

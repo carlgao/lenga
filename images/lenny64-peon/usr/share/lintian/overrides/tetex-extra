@@ -1,0 +1,4 @@
+tetex-extra: zero-byte-file-in-doc-directory
+tetex-extra: extra-license-file
+tetex-extra: script-not-executable
+tetex-extra: wrong-name-for-upstream-changelog

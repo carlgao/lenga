@@ -1,0 +1,6 @@
+# <% lintian %> override file for preview-latex-style
+
+# We do check these.
+preview-latex-style binary: maintainer-script-does-not-check-for-existence-of-installdocs postinst
+preview-latex-style binary: maintainer-script-does-not-check-for-existence-of-installdocs prerm
+

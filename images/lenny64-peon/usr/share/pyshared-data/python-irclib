@@ -1,0 +1,9 @@
+[python-package]
+format = 1
+python-version = all
+[pycentral]
+version = 0.6.6
+[files]
+/usr/share/pyshared/irclib.py=f
+/usr/share/pyshared/python_irclib-0.4.6.egg-info=f
+/usr/share/pyshared/ircbot.py=f

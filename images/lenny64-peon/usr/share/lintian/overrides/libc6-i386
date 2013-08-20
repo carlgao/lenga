@@ -1,0 +1,18 @@
+# libpthread must be stripped specially; GDB needs the non-dynamic 
+# symbol table in order to load the thread debugging library.
+libc6-i386: unstripped-binary-or-object ./emul/ia32-linux/lib/libpthread-2.7.so
+
+# Those file are actually .o files not package in a ar archive, and
+# thus should not be stripped
+libc6-i386: unstripped-binary-or-object ./emul/ia32-linux/usr/lib/libieee.a
+libc6-i386: unstripped-binary-or-object ./emul/ia32-linux/usr/lib/libmcheck.a
+
+# It is normal that the ELF dynamic linker does not need any other 
+# library
+libc6-i386: shared-lib-without-dependency-information ./emul/ia32-linux/lib/ld-2.7.so
+
+# It is correct for the glibc to install files in such locations
+libc6-i386: file-in-unusual-dir lib32
+libc6-i386: file-in-unusual-dir usr/lib32
+libc6-i386: file-in-unusual-dir lib64
+libc6-i386: file-in-unusual-dir usr/lib64

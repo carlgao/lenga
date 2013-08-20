@@ -1,0 +1,15 @@
+?package(emacs21):\
+  needs="X11"\
+  section="Apps/Editors"\
+  title="Emacs 21.4a (X11)"\
+  command="/usr/bin/emacs21 -i"\
+  icon="/usr/share/emacs/21.4/etc/gnu-32x32.xpm"\
+  hints="Text"
+
+?package(emacs21):\
+  needs="text"\
+  section="Apps/Editors"\
+  title="Emacs 21.4a (text)"\
+  command="/usr/bin/emacs21 -nw"\
+  icon="/usr/share/emacs/21.4/etc/gnu-32x32.xpm"\
+  hints="Text"

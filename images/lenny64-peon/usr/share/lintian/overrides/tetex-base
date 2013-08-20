@@ -1,0 +1,5 @@
+tetex-base: zero-byte-file-in-doc-directory
+tetex-base: extra-license-file
+tetex-base: script-not-executable
+tetex-base: wrong-name-for-upstream-changelog
+tetex-base: maintainer-script-needs-depends-on-ucf postinst

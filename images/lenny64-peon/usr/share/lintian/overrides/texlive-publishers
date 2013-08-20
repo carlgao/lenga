@@ -1,0 +1,4 @@
+texlive-publishers: zero-byte-file-in-doc-directory
+texlive-publishers: extra-license-file
+texlive-publishers: script-not-executable
+texlive-publishers: wrong-name-for-upstream-changelog

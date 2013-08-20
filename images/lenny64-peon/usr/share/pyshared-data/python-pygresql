@@ -1,0 +1,11 @@
+[python-package]
+format = 1
+python-version = 2.4, 2.5
+[pycentral]
+version = 0.6.7
+[files]
+/usr/lib/python2.5/site-packages/_pg.so=f
+/usr/lib/python2.4/site-packages/_pg.so=f
+/usr/share/pyshared/PyGreSQL-3.8.1.egg-info=f
+/usr/share/pyshared/pg.py=f
+/usr/share/pyshared/pgdb.py=f

@@ -1,0 +1,3 @@
+policycoreutils: description-synopsis-might-not-be-phrased-properly
+policycoreutils: non-standard-toplevel-dir selinux/
+policycoreutils: package-contains-empty-directory selinux/

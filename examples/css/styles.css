@@ -9,6 +9,8 @@ body {
 	font-family: Verdana;
 	font-size: 10pt;
 	overflow: hidden;
+	background-image: url('../images/troll.png');
+	background-size: 100% 100%;
 }
 
 #heading {
@@ -28,4 +30,7 @@ body {
 }
 #heading a {
 	color: #4488ff;
+}
+
+#viewport {
 }

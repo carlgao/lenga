@@ -1,0 +1,4 @@
+texlive-generic-extra: zero-byte-file-in-doc-directory
+texlive-generic-extra: extra-license-file
+texlive-generic-extra: script-not-executable
+texlive-generic-extra: wrong-name-for-upstream-changelog

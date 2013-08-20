@@ -1,0 +1,4 @@
+texlive-math-extra: zero-byte-file-in-doc-directory
+texlive-math-extra: extra-license-file
+texlive-math-extra: script-not-executable
+texlive-math-extra: wrong-name-for-upstream-changelog

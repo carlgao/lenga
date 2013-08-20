@@ -1,0 +1,22 @@
+[python-package]
+format = 1
+python-version = 2.4, 2.5
+[pycentral]
+version = 0.6.7
+[files]
+/usr/share/pyshared/mx=d
+/usr/share/pyshared/mx/Stack=d
+/usr/share/pyshared/mx/Stack/UserStack.py=f
+/usr/share/pyshared/mx/Stack/__init__.py=f
+/usr/share/pyshared/mx/Stack/mxStack=d
+/usr/share/pyshared/mx/Stack/mxStack/test.py=f
+/usr/share/pyshared/mx/Stack/mxStack/__init__.py=f
+/usr/share/pyshared/mx/Stack/stackbench.py=f
+/usr/lib/python2.4/site-packages/mx=d
+/usr/lib/python2.4/site-packages/mx/Stack=d
+/usr/lib/python2.4/site-packages/mx/Stack/mxStack=d
+/usr/lib/python2.4/site-packages/mx/Stack/mxStack/mxStack.so=f
+/usr/lib/python2.5/site-packages/mx=d
+/usr/lib/python2.5/site-packages/mx/Stack=d
+/usr/lib/python2.5/site-packages/mx/Stack/mxStack=d
+/usr/lib/python2.5/site-packages/mx/Stack/mxStack/mxStack.so=f

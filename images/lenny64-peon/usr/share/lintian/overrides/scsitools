@@ -1,0 +1,2 @@
+scsitools: shell-script-fails-syntax-check ./usr/sbin/scsi-config
+scsitools: shell-script-fails-syntax-check ./usr/sbin/tk_scsiformat

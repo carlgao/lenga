@@ -1,0 +1,1 @@
+libmail-imapclient-perl: manpage-has-errors-from-man usr/share/man/man3/Mail::IMAPClient.3pm.gz 2601: warning [p 35, 6.5i]: can't break line

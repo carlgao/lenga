@@ -1,0 +1,29 @@
+[python-package]
+format = 1
+python-version = 2.4, 2.5
+[pycentral]
+version = 0.6.7
+[files]
+/usr/share/pyshared/mx=d
+/usr/share/pyshared/mx/TextTools=d
+/usr/share/pyshared/mx/TextTools/Constants=d
+/usr/share/pyshared/mx/TextTools/Constants/TagTables.py=f
+/usr/share/pyshared/mx/TextTools/Constants/__init__.py=f
+/usr/share/pyshared/mx/TextTools/Constants/Sets.py=f
+/usr/share/pyshared/mx/TextTools/TextTools.py=f
+/usr/share/pyshared/mx/TextTools/mxTextTools=d
+/usr/share/pyshared/mx/TextTools/mxTextTools/testPickleSegFault.py=f
+/usr/share/pyshared/mx/TextTools/mxTextTools/testHTML.py=f
+/usr/share/pyshared/mx/TextTools/mxTextTools/test.py=f
+/usr/share/pyshared/mx/TextTools/mxTextTools/testSegFault.py=f
+/usr/share/pyshared/mx/TextTools/mxTextTools/__init__.py=f
+/usr/share/pyshared/mx/TextTools/mxTextTools/testkj.py=f
+/usr/share/pyshared/mx/TextTools/__init__.py=f
+/usr/lib/python2.4/site-packages/mx=d
+/usr/lib/python2.4/site-packages/mx/TextTools=d
+/usr/lib/python2.4/site-packages/mx/TextTools/mxTextTools=d
+/usr/lib/python2.4/site-packages/mx/TextTools/mxTextTools/mxTextTools.so=f
+/usr/lib/python2.5/site-packages/mx=d
+/usr/lib/python2.5/site-packages/mx/TextTools=d
+/usr/lib/python2.5/site-packages/mx/TextTools/mxTextTools=d
+/usr/lib/python2.5/site-packages/mx/TextTools/mxTextTools/mxTextTools.so=f

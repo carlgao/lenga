@@ -1,0 +1,102 @@
+USO:    highlight [abcdefghijklmnopqrstuvwxyzACDEFHIKLNPRSTUVWXZ]
+                  [-i input file] [-o output file]
+                  [-S syntax] [-O outdir] [-b wildcard] [-B wildcard]
+                  [-t num] [-c css_outfile] [-e css_infile] [-s CSS_style]
+                  [-D new data dir] [-E data dir] [input files]
+
+
+ Op�es Gerais:
+
+ -B, --batch-recursive=<wc>     converte todos os arquivos recursivamente
+                                do diret�io atual
+                                (Exemplo: highlight -B '*.cpp')
+ -D, --data-dir=<directory>     ajusta diret�io de dados
+ -E, --add-data-dir=<directory> ajusta um diret�io de dados adicional,
+                                que seja procurarado primeiramente
+ -h, --help                     mostra esta ajuda
+ -H, --help-lang=<lang>         mostra ajuda da l�gua desejada
+                                <lang> = ["en", "es", "de", "fr", "br"]
+ -i, --input=<file>             nome do nico arquivo de entrada
+ -o, --output=<file>            nome do nico arquivo de sa�a
+ -O, --outdir=<directory>       nome do diret�io de sa�a
+ -p, --list-langs               lista de defini�es de linguagens instaladas
+ -P, --progress                 mostra barra de progresso no modo recursivo (-B)
+ -q, --quiet                    modo sil�cioso para o modo recursivo (-B)
+ -S, --syntax=<type>            especif�a o tipo de c�igo fonte
+ -v, --verbose                  modo verbal (debug mode)
+ -w, --list-themes              mostra os temas de cores instalados
+     --force                    generate output if language type is unknown
+     --print-config             print path configuration
+     --version                  mostra a vers� e licen�
+
+
+ Formatos de sa�a:
+
+ -A, --ansi                     generates terminal output (16 colours)
+ -L, --latex                    gera um arquivo LaTeX
+ -M, --xterm256                 generates terminal output (256 colours)
+ -R, --rtf                      gera um arquivo RTF
+ -T, --tex                      gera um arquivo TeX
+ -X, --xhtml                    gera um arquivo XHTML 1.1
+ -Z, --xml                      gera um arquivo XML
+
+
+ Op�es do formato de sa�a:
+
+ -c, --style-outfile=<file>     nome do arquivo de sa�a CSS
+ -d, --doc-title=<title>        document title
+ -e, --style-infile=<file>      nome do arquivo a ser incluido no arquivo de
+                                sa�a CSS
+ -I, --include-style            incluir defini�o CSS
+ -f, --fragment                 omitir cabe�lho e rodap� -F, --reformat=<style>         reformatar e identar o arquivo de sa�a no
+                                estilo selecionado
+                                <style> = ["ansi", "gnu", "java", "kr", "linux"]
+ -j, --line-number-width        line number width incl. left padding
+ -k, --font=<font>              defines font (specific to output format)
+ -K, --font-size=<num?>         defines font size (specific to output format)
+ -l, --linenumbers              mostra numeros de linhas do arquivo de sa�a
+ -m, --line-number-start=<cnt>  start line numbering with cnt (assumes -l)
+ -s, --style=<style>            especif�a o estilo de cor
+ -t, --replace-tabs=<num>substitui tabula�es por espa�s <num>
+ -V, --wrap-simple              quebra linhas longas sem recortar par�etros e
+                                indica�es da fun�o
+ -W, --wrap                     quebra de linha
+ -z, --zeroes                   pre-encha espa� principal de nmeros da linha
+                                com zeros (0)
+
+
+ Op�es de sa�a (X)HTML:
+
+ -a, --anchors                  inseri hyperlinks aos numeros de linhas
+ -y, --anchor-prefix=<str>      define anchor name prefix
+ -N, --anchor-filename          use input file name as anchor name
+ -C, --print-index              gera um arquivo index com hyperlinks para os
+                                arquivos de sa�a
+ -n, --ordered-list             print lines as ordered list items
+
+
+ Op�es de sa�a LaTeX:
+
+ -b, --babel                    disable Babel package shorthands
+ -r, --replace-quotes           substituir cita�es duplas por \dq{} (asume -f)
+
+
+ Op�es de sa�a RTF:
+
+ -x, --page-size=<ps>           define page size (a3, a4, a5, b4, b5, b6, letter)
+
+ -t ser�ignorado se -F for usado.
+ -i e -o ser� ignorados se -b ou -B forem usados.
+ -r ser�ignorado se -f n� for usado.
+ -c ser�ignorado se o formato de sa�a n� suportar o referido estilo.
+ Se os arquivos de entrada e sa�a n� forem especificdos, stdin e stout ser�
+ para input ou output.
+ HTML ser�gerada, se outro formato de sa�a n� for especificado. Defini�es de
+ estilo ser� guardados em highlight.css (HTML, XHTML) ou highlight.sty (LaTeX,
+ TeX) se -c ou -I forem especificados.
+ Reformata�o de c�igo funciona somente com C, C++, C# e Java.
+ Quebra de linhas com -V ou -W causam defeito em cores de coment�ios
+ e em linhas longas. Usar com cuidado
+
+ Atualiza�es e informa�es: http://www.andre-simon.de/
+ Traduzido por: Ad� Raul <adao.raul@terra.com.br>

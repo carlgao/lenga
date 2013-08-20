@@ -1,0 +1,5 @@
+?package(jed):  needs="text"			\
+		section="Applications/Editors"	\
+		title="Jed"			\
+		command="/usr/bin/jed"		\
+		hints="Text"

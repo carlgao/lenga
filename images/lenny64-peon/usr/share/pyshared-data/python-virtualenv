@@ -1,0 +1,19 @@
+[python-package]
+format = 1
+python-version = all
+[pycentral]
+version = 0.6.6
+[files]
+/usr/share/pyshared/support-files=d
+/usr/share/pyshared/support-files/setuptools-0.6c8-py2.5.egg=f
+/usr/share/pyshared/support-files/setuptools-0.6c8-py2.4.egg=f
+/usr/share/pyshared/virtualenv-1.1.egg-info=d
+/usr/share/pyshared/virtualenv-1.1.egg-info/SOURCES.txt=f
+/usr/share/pyshared/virtualenv-1.1.egg-info/not-zip-safe=f
+/usr/share/pyshared/virtualenv-1.1.egg-info/PKG-INFO=f
+/usr/share/pyshared/virtualenv-1.1.egg-info/entry_points.txt=f
+/usr/share/pyshared/virtualenv-1.1.egg-info/top_level.txt=f
+/usr/share/pyshared/virtualenv-1.1.egg-info/dependency_links.txt=f
+/usr/share/pyshared/rebuild-script.py=f
+/usr/share/pyshared/refresh-support-files.py=f
+/usr/share/pyshared/virtualenv.py=f

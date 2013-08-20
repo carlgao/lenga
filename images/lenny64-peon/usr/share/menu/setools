@@ -1,0 +1,19 @@
+?package(setools):needs="X11" section="Applications/System/Security"\
+ title="apol" longtitle="SELinux policy analysis tool" \
+ description="apol is a graphical tool that allows the \
+ user to inspect aspects of a SELinux policy.  The tool\
+ allows the user to browse policy components (types,   \
+ classes, roles, users, etc.), rules  (TE,  RBAC,  MLS),\
+ and file system contexts.  The tool also provides in   \
+ depth analyses of domain transitions, information flows,\
+ and relabeling permissions." command="/usr/bin/apol"
+?package(setools):needs="X11" section="Applications/System/Security"\
+ title="sediff" longtitle="SELinux policy difference tool" \
+ description="sediff allows the user to inspect the semantic\
+ differences between two SELinux policies." command="/usr/bin/sediff"
+?package(setools):needs="X11" section="Applications/System/Monitoring"\
+ title="seaudit" longtitle="SELinux graphical audit log analysis tool"\
+ description=" seaudit allows the user to view and filter the contents\
+ of a log file.  seaudit supports the syslog and auditd log formats \
+ and provides queries to inspect the SELinux policy based on log \
+ messages." command="/usr/sbin/seaudit"
